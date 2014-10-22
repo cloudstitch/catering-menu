@@ -1,12 +1,43 @@
-$(function() {
 
-  var cal = $('#calendar').calendario({
+function generateData() {
+  var itemList = CTS('sheet|Meals!rows')[0].toJson();
+  var typeList = CTS('sheet|MealTypes!rows')[0].toJson();
+
+  var ret = {};
+
+  for (var i = 0; i < itemList.length; i++) {
+    var meal = itemList[i];
+    var day = moment(meal.Date, 'MM/DD/YYYY').format('MM-DD-YYYY');
+    var html = "<ul class='menu'>";
+
+    for (var j = 0; j < typeList.length; j++) {
+      var type = typeList[j];
+      if (meal[type.ID]) {
+        var begin = type.Start;
+        var end = type.End;
+        var title = meal[type.ID];
+        html += "<li class='meal " + type.ID + "'>";
+        html += "<span class='meal'>" + type.ID + "</span>";
+        html += "<span class='fromto'>" + type.Start + " - " + type.End + "</span>";
+        html += "<span class='title'>" + title + "</span>";
+        html += "</li>";
+      }
+    }
+    html += "</ul>";
+    ret[day] = html;
+  }
+  console.log(ret);
+  return ret;
+
+}
+
+$(function() {
+  window.cal = $('#calendar').calendario({
     onDayClick: function( $el, $contentEl, dateProperties ) {
       for(var key in dateProperties) {
         console.log( key + ' = ' + dateProperties[ key ] );
       }
-    },
-    caldata: codropsEvents
+    }
   });
 
   var curMonth = cal.getMonthName();
@@ -46,52 +77,9 @@ $(function() {
     }
   }
 
-  // you can also add more data later on. As an example:
-  /*
-  someElement.on( 'click', function() {
-    
-    cal.setData( {
-      '03-01-2013' : '<a href="#">testing</a>',
-      '03-10-2013' : '<a href="#">testing</a>',
-      '03-12-2013' : '<a href="#">testing</a>'
-    } );
-    // goes to a specific month/year
-    cal.goto( 3, 2013, updateMonthYear );
-
-  } );
-  */
-
-  function createMeal(type, desc, meals) {
-
-  }
-
-  function fetchDate(item) {
-    // Assumption: date is month/day/year
-
-    // item.date.'09-05-2014'
-  }
-
-  // itemList: each item has Date + MealNames
-  // typeList: each item has ID, Name, StartTime, EndTime 
-  function generateData(itemList, typeList) {
-    var meals = {};
-    for (var i = 0; i < typeList.length; i++) {
-      var item = typeList[i];
-      meals[item.id] = item;
+  CTS.booted.then(
+    function() {
+      window.cal.setData(generateData());
     }
-
-    var ret = {};
-
-    for (var i = 0; i < itemList.length; i++) {
-      var item = itemList[i];
-      var events = [];
-      for (var meal in meals) {
-        if (typeof item[meal] != 'undefined') {
-          events.push(createMeal(meal, item[meal], meals));
-        }
-      }
-      var day = fetchDate(item);
-      ret[day] = events;
-    }
-  }
+  );
 });

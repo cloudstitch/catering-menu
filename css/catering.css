@@ -1,0 +1,56 @@
+.fc-content > div {
+  width: 100%;
+}
+
+ul.menu {
+  list-type: none !important;
+  list-style-type: none !important;
+}
+
+ul.menu li.meal {
+  background-color: rgb(0, 72, 83) !important;
+  color: white;
+  margin-bottom: 10px;
+}
+
+ul.menu li.Lunch {
+
+}
+
+ul.menu li.Dinner {
+
+}
+
+ul.menu li.Night {
+
+}
+
+ul.menu li.Breakfast {
+
+}
+
+ul.menu li span {
+  background-color: rgb(0, 72, 83) !important;
+
+}
+
+ul.menu li span.meal {
+  font-variant: small-caps !important;
+  font-size: 0.8em !important;
+}
+
+ul.menu li span.title {
+  font-variant: normal !important;
+  display: block;
+  font-size: 1.0em !important;
+    text-transform: none !important;
+
+}
+
+ul.menu li span.fromto {
+  font-variant: normal !important;
+  font-style: italic !important;
+  margin-left: 10px;
+  font-size: 0.8em !important;
+  text-transform: none !important;
+}
