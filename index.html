@@ -4,6 +4,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="css/bootstrap-datetimepicker.css" rel="stylesheet" media="screen">
     <link href="css/jumbotron-narrow.css" rel="stylesheet">
+    <link href="css/callout.css" rel="stylesheet">
 
     <!-- Markup - paginator will be injected as html into this div -->
     <div id="example"></div>
@@ -16,13 +17,20 @@
         <script src="http://localhost:3000/release/cloudstitch.dev.js" app="ted/catering"></script>
     <link type="cloudstitch/gsheet" href="http://cloudstitch.io/ted/catering-menu/datasource/sheet" />
 
-
   </head>
   <body>
     <div class="container">
-      <h2>Menu</h2>
+      <div class="row">
+        <div class="col-sm-12">
+          <h2 style="vertical-align: middle; line-height: 144px">
+            <img src="images/theta-delta-chi.png" style="float: left; vertical-align: middle;" width="150px" />
+            Theta Delta Chi Menu
+          </h2>
+        </div>
+      </div>
       <div id="paginator"></div>
-      <div id="menu"></div>
+      <div id="menu">
+      </div>
     </div>
     <script type="text/javascript" src="js/catering2.js"></script>
 

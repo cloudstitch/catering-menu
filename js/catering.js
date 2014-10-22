@@ -16,14 +16,12 @@ function generateData() {
         var begin = type.Start;
         var end = type.End;
         var title = meal[type.ID];
-        html += "<li class='meal " + type.ID + "'>";
-        html += "<span class='meal'>" + type.ID + "</span>";
-        html += "<span class='fromto'>" + type.Start + " - " + type.End + "</span>";
-        html += "<span class='title'>" + title + "</span>";
-        html += "</li>";
+        html += "<div class='bs-callout bs-callout-" + type.ID + "'>";
+        html += "<h4>" + type.ID + "</h4>";
+        html += "<p>" + title + "</p>";
+        html += "</div>";
       }
     }
-    html += "</ul>";
     ret[day] = html;
   }
   console.log(ret);
