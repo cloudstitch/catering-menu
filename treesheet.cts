@@ -2,4 +2,4 @@
 @html ted-test-of-fork-2 undefined;
 
 
- :graft ted-test-of-fork-2|;
+body|*[widget="ted/test-of-fork-2"] :graft ted-test-of-fork-2|;
