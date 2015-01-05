@@ -1,4 +1,4 @@
 @gsheet sheet 1eD16bWLci6WjFTUBiBqqQrAszwx3i-s5KTSFQq05Ebw;
-@html ted-test-of-fork-2 //apps.cloudstitch.io/ted/test-of-fork-2/;
+@html ted-test-of-fork-2 //apps.cloudstitch.io/ted/test-of-fork-2/index.html;
 
 body|*[widget="ted/test-of-fork-2"] :graft ted-test-of-fork-2|#foo bar;
