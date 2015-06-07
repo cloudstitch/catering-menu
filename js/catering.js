@@ -1,24 +1,22 @@
 
 function showMenuFor(dateStr) {
-  var itemList = CTS('sheet|Meals!rows')[0].toJson();
-  var typeList = CTS('sheet|MealTypes!rows')[0].toJson();
+  var itemList = CTS('sheet|Meals!rows').nodes[0].toJson();
+  var typeList = CTS('sheet|MealTypes!rows').nodes[0].toJson();
 
   var ret = {};
   var html = "";
-
   for (var i = 0; i < itemList.length; i++) {
     var meal = itemList[i];
     var day = moment(meal.Date, 'MM/DD/YYYY').format('MM/DD/YYYY');
-    console.log(day, dateStr)
     if (day == dateStr) {
       for (var j = 0; j < typeList.length; j++) {
         var type = typeList[j];
-        if (meal[type.ID]) {
+        if (meal[type.Name]) {
           var begin = moment(type.Start, 'hh:mm:ss a').format('h:mm a');
           var end = moment(type.End, 'hh:mm:ss a').format('h:mm a');
-          var title = meal[type.ID];
-          html += "<div class='bs-callout bs-callout-" + type.ID + "'>";
-          html += "<h4>" + type.ID + " ";
+          var title = meal[type.Name];
+          html += "<div class='bs-callout bs-callout-" + type.Name + "'>";
+          html += "<h4>" + type.Name + " ";
           html += "<span>" + begin + " - " + end + "</span>";
           html += "</h4>";
           html += "<p>" + title + "</p>";
